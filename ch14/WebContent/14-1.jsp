@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<td>휴대폰</td>
-			<td><input type="text" name="ph" /></td>
+			<td><input type="text" name="hp" /></td>
 		</tr>
 		<tr>
 			<td>주소</td>
