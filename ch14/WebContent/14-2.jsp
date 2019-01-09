@@ -36,6 +36,8 @@
  	// 5단계 - 결과셋 처리(SELECT일 경우) 
  	// 6단계	 - 데이터베이스 종료 
  	conn.close(); 
+ 	
+ 	response.sendRedirect("./14-3.jsp");
  	 
  	// 리다이렉트 
  %> 
