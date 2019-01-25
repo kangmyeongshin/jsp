@@ -7,37 +7,9 @@
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="./js/check_duplicate.js"></script>
-		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 
-        <script src="./js/zipcode.js"></script>
-        <script>
-        $(function(){
-    		$('#regForm').submit(function(){
-    			
-    			var uid=$('input[name=uid]').val();
-    			var pw1=$('input[name=pw1]').val();
-    			var pw2=$('input[name=pw2]').val();
-    			var name=$('input[name=name]').val();
-    			
-    			if(!isUidOk){
-    				alert('아이디가 이미 사용중 입니다');
-    				return false;
-    			}
-    		      			
-    			//아이디 자리수체크
-    			if(uid.length < 4){
-    				alert('아이디는 최소 4자 이상이어야 합니다.');
-    				return false;
-    			}
-    			//비번 일치여부 확인
-    			if(pw1 != pw2){
-    				alert('비밀번호가 서로 일치하지 않습니다.')
-    				return false
-    			}
-    			return true;
-    		
-    		});
-    	});
-        </script>
+		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+		<script src="./js/zipcode.js"></script>
+		<script src="./js/check_validate.js"></script>
 	</head>
 	<body>
 		<div id="member">
@@ -82,14 +54,16 @@
 							</tr>
 							<tr>
 								<td>EMAIL</td>
-								<td><input type="email" name="email" placeholder="이메일을 입력" 	required />
-								<span class="resultEmail"></span>
+								<td>
+									<input type="email" name="email" placeholder="이메일을 입력" required />
+									<span class="resultEmail"></span>
 								</td>
 							</tr>
 							<tr>
 								<td>휴대폰</td>
-								<td><input type="text" name="hp" placeholder="-포함 13자리를 입력" maxlength="13" required />
-								<span class="resultHp"></span>
+								<td>
+									<input type="text" name="hp" placeholder="-포함 13자리를 입력" maxlength="13" required />
+									<span class="resultHp"></span>
 								</td>
 							</tr>
 							<tr>
@@ -108,7 +82,6 @@
 								</td>
 							</tr>
 						</table>
-			
 					</section>
 					<div>
 						<a href="#" class="cancel">취소</a> 

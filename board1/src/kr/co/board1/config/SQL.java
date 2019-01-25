@@ -15,5 +15,17 @@ public class SQL {
 											+ "regip=?, "
 											+ "rdate=NOW()";
 	
-	public static final String SELECT_LIST ="SELECT b.*, m.nick FROM JSP_BOARD AS b JOIN JSP_MEMBER AS m ON b.uid = m.uid ORDER BY b.seq DESC";
+	public static final String SELECT_LIST ="SELECT b.*, m.nick FROM JSP_BOARD AS b JOIN JSP_MEMBER AS m ON b.uid = m.uid WHERE parent=0 ORDER BY b.seq DESC";
+	public static final String SELECT_VIEW = "SELECT * FROM `JSP_BOARD` WHERE seq=?";
+	
+	public static final String UPDATE_HIT ="UPDATE `JSP_BOARD` SET hit=hit+1 WHERE seq=?";
+	public static final String DELETE_BOARD ="DELETE FROM `JSP_BOARD` WHERE seq=?";
+	public static final String UPDATE_BOARD ="UPDATE `JSP_BOARD` SET "
+											+ "title=?,"
+											+ "content=?,"
+											+ " WHERE seq=?";
+
+	public static final String INSERT_COMMENT = "CALL insertComment(?,?,?,?)";
+	public static final String SELECT_COMMENT = "SELECT * FROM `JSP_BOARD` WHERE parent=? ORDER BY seq ASC";
+	
 }

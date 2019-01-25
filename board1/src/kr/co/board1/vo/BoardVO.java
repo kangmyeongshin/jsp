@@ -12,8 +12,8 @@ public class BoardVO {
 	private String uid;
 	private String regip;
 	private String rdate;
-	
 	private String nick;
+	
 	public int getSeq() {
 		return seq;
 	}

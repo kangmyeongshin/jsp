@@ -6,11 +6,10 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
-<%@page import="oracle.jdbc.driver.DBConversion"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	MemberService service = MemberService.getInstance();
-	TermsVO vo= service.terms();
+	TermsVO vo = service.terms();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,27 +19,25 @@
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
-		$(document).ready(function(){
-			$('.btnNext').click(function(){
-				var rs1 = $('input[name=chk1]').is(':checked');
-				var rs2 = $('input[name=chk2]').is(':checked');
+			$(document).ready(function(){
 				
-				if(!rs1){
-					alert('이용약관 동의를 하셔야 합니다.');
-					return false;
-				}else if(!rs2){
-					alert('개인정보 동의를 하셔야 합니다.');
-					return false;
-				}else{
-					return true;
-				
+				$('.btnNext').click(function(){
 					
-				}
+					var rs1 = $('input[name=chk1]').is(':checked');
+					var rs2 = $('input[name=chk2]').is(':checked');
+					
+					if(!rs1){
+						alert('이용약관 동의를 하셔야 합니다.');
+						return false;
+					}else if(!rs2){
+						alert('개인정보 동의를 하셔야 합니다.');
+						return false;
+					}else{
+						return true;
+					}
+				});
 			});
-			
-			
-		});
-		</script>		
+		</script>
 	</head>
 
 	<body>
@@ -63,8 +60,7 @@
 					<caption>개인정보 취급방침</caption>
 					<tr>
 						<td>
-							<textarea readonly><%= vo.getPrivacy() %>
-							</textarea>
+							<textarea readonly><%= vo.getPrivacy() %></textarea>
 							<div>
 								<label><input type="checkbox" name="chk2" />&nbsp;동의합니다.</label>        
 							</div>

@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
-	String register =request.getParameter("register");
-	String result =request.getParameter("result");
+	request.setCharacterEncoding("UTF-8");
+	String register = request.getParameter("register");
+	String result = request.getParameter("result");
 %>
 <!DOCTYPE html>
 <html>
@@ -11,14 +11,18 @@
 		<title>로그인</title>
 		<link rel="stylesheet" href="./css/style.css" />
 		<script>
-			var register = '<%= register%>';
-			var result = '<%= result%>';
+			var register = '<%= register %>';
+			var result   = '<%= result %>';
+			
 			if(register == 'success'){
 				alert('회원가입을 축하합니다.');
 			}
-			if(reulst == 'fail'){
+			
+			if(result == 'fail'){
 				alert('일치하는 회원이 없습니다. \n 다시 확인하시기 바랍니다.');
 			}
+			
+		
 		</script>
 	</head>
 	<body>
