@@ -44,7 +44,8 @@
 		user.setRdate(rs.getString(8));
 		
 	}
-		
+	}catch(Exception e){
+		e.printStackTrace();
 		
 	} finally{
 	//6단계
