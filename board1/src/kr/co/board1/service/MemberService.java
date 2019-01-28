@@ -14,38 +14,39 @@ import kr.co.board1.config.SQL;
 import kr.co.board1.vo.MemberVO;
 import kr.co.board1.vo.TermsVO;
 
-public class MemberService {
-	//싱글톤 객체 : 교재 440p
+public class MemberService { 
+	
+	// 싱글톤 객체 : 교재 440p
 	private static MemberService service = new MemberService();
+	
 	public static MemberService getInstance() {
 		return service;
 	}
-	//객체를 생성 할 수 없게 private 생성자 선언
-	private MemberService() {
-		
-	}
+	
+	// 객체를 생성 할 수 없게 private 생성자 선언 
+	private MemberService() {}
 	
 	public String login(HttpServletRequest request, HttpSession session) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		String uid = request.getParameter("uid");
+		// 파라미터 수신
+		request.setCharacterEncoding("UTF-8");
+		String uid  = request.getParameter("uid");
 		String pass = request.getParameter("pass");
 		
 		String redirectUrl = null;
-		
-			
+
 		Connection conn = DBConfig.getConnection();
-
-
-		//3단계
+		
+		// 3단계
 		PreparedStatement psmt = conn.prepareStatement(SQL.SELECT_LOGIN);
 		psmt.setString(1, uid);
 		psmt.setString(2, pass);
-		//4단계
+		
+		// 4단계
 		ResultSet rs = psmt.executeQuery();
-		//5단계
+		
+		// 5단계
 		if(rs.next()){
-			//아이디와 비밀번호가 일치하는 회원이 텡이블에 있을경우
-				
+			// 아이디와 비밀번호가 일치하는 회원이 테이블에 있을 경우
 			MemberVO vo = new MemberVO();
 			vo.setSeq(rs.getInt(1));
 			vo.setUid(rs.getString(2));
@@ -62,48 +63,54 @@ public class MemberService {
 			vo.setRdate(rs.getString(13));
 			
 			session.setAttribute("member", vo);
-			redirectUrl="../list.jsp";
+			
+			redirectUrl = "../list.jsp";
 		}else{
-			//회원이 아닐 경우
-			redirectUrl="../login.jsp?result=fail";
+			// 아이디와 비밀번호가 일치하는 회원이 테이블에 없을 경우
+			redirectUrl = "../login.jsp?result=fail";
 		}
-		//6단계
+		
+		// 6단계
 		rs.close();
 		psmt.close();
 		conn.close();
 		
 		return redirectUrl;
 	}
-	public void logout(HttpSession session,HttpServletResponse response) throws Exception {
+	
+	public void logout(HttpSession session, HttpServletResponse response) throws Exception {
 		session.invalidate();
 		response.sendRedirect("../login.jsp");
+		
 	}
 	
-	public TermsVO terms() throws Exception{
-		Connection conn = DBConfig.getConnection();
-		//3단계 (쿼리문 실행객체생성)
+	public TermsVO terms() throws Exception {
+		
+		Connection conn = DBConfig.getConnection();		
+		// 3단계 - 쿼리실행 객체 생성
 		Statement stmt = conn.createStatement();
-		//4단계(쿼리문 실행)
-		ResultSet rs=stmt.executeQuery(SQL.SELECT_TERMS);
 		
-		//5단계 결과셋 처리(SELECT  경우)
+		// 4단계 - 쿼리실행
+		ResultSet rs = stmt.executeQuery(SQL.SELECT_TERMS);
+		
+		// 5단계 - 결과셋 처리(SELECT 경우)
 		TermsVO vo = null;
-		
 		
 		if(rs.next()){
 			vo = new TermsVO();
 			vo.setTerms(rs.getString(1));
 			vo.setPrivacy(rs.getString(2));
-			 
 		}
-		//6단계 - DB 자원 해제
+		
+		// 6단계 - DB자원 해제
 		rs.close();
 		stmt.close();
 		conn.close();
-
+		
 		return vo;
 	}
 	public void register(HttpServletRequest request) throws Exception {
+		
 		// 파라미터 수신
 		request.setCharacterEncoding("UTF-8");
 		String uid   = request.getParameter("uid");
@@ -142,6 +149,4 @@ public class MemberService {
 		conn.close();
 	}
 	
-	
-
 }

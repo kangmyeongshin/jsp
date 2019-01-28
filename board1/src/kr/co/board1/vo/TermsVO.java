@@ -1,9 +1,10 @@
 package kr.co.board1.vo;
 
 public class TermsVO {
+
+	private String terms;
+	private String privacy;
 	
-	String terms;
-	String privacy;
 	public String getTerms() {
 		return terms;
 	}
@@ -17,5 +18,5 @@ public class TermsVO {
 		this.privacy = privacy;
 	}
 	
-
+	
 }

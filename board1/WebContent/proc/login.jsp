@@ -8,8 +8,17 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	MemberService service=MemberService.getInstance();
-	String redirectUrl=service.login(request, session);
+	MemberService service = MemberService.getInstance();
+	String redirectUrl = service.login(request, session);
+	
 	//리다이렉트
 	response.sendRedirect(redirectUrl);
 %>
+
+
+
+
+
+
+
+

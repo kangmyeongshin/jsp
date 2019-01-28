@@ -14,6 +14,7 @@ public class MemberVO {
 	private String addr2;
 	private String regip;
 	private String rdate;
+	
 	public int getSeq() {
 		return seq;
 	}
@@ -92,7 +93,4 @@ public class MemberVO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	
-	
-
 }

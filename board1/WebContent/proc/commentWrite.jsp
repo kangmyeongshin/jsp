@@ -10,4 +10,13 @@
 	
 	// 다시 view로 리다이렉트
 	response.sendRedirect("../view.jsp?seq="+parent);		
+
 %>
+
+
+
+
+
+
+
+

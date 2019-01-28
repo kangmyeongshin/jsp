@@ -1,6 +1,7 @@
 package kr.co.board1.vo;
 
 public class BoardVO {
+
 	private int seq;
 	private int parent;
 	private int comment;
@@ -12,7 +13,38 @@ public class BoardVO {
 	private String uid;
 	private String regip;
 	private String rdate;
+	
 	private String nick;
+	// ÆÄÀÏ
+	private String oldName;
+	private String newName;
+	private int download;
+	
+	public String getOldName() {
+		return oldName;
+	}
+	public void setOldName(String oldName) {
+		this.oldName = oldName;
+	}
+	public String getNewName() {
+		return newName;
+	}
+	public void setNewName(String newName) {
+		this.newName = newName;
+	}
+	public int getDownload() {
+		return download;
+	}
+	public void setDownload(int download) {
+		this.download = download;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	
 	
 	public int getSeq() {
 		return seq;
@@ -80,12 +112,4 @@ public class BoardVO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	public String getNick() {
-		return nick;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
-	
-
 }

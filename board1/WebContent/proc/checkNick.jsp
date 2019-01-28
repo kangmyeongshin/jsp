@@ -5,36 +5,47 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	//파라미터수신
-	request.setCharacterEncoding("utf-8");
-	String nick =request.getParameter("nick");
-	//데이터베이스 작업 
-	final String HOST = "jdbc:mysql://192.168.0.126:3306/kms"; 
-	final String USER = "kms"; 
-	final String PASS = "1234"; 
-	//1단계
+	// 파라미터 수신
+	request.setCharacterEncoding("UTF-8");
+	String nick = request.getParameter("nick");
+
+	//데이터베이스 정보
+	final String HOST = "jdbc:mysql://192.168.0.126:3306/chhak";
+	final String USER = "chhak";
+	final String PASS = "1234";
+			
+	// 1단계
 	Class.forName("com.mysql.jdbc.Driver");
-	//2단계
-	Connection conn = DriverManager.getConnection(HOST,USER,PASS);
-	//3단계
-	Statement stmt = conn.createStatement();
-	//4단계
-	ResultSet rs =stmt.executeQuery("SELECT COUNT(*) FROM `JSP_MEMBER` WHERE nick='"+nick+"'");
+	// 2단계
+	Connection conn = DriverManager.getConnection(HOST, USER, PASS);
 	
-	//5단계
+	// 3단계
+	Statement stmt = conn.createStatement();
+	
+	// 4단계
+	ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM `JSP_MEMBER` WHERE nick='"+nick+"'");
+	
+	// 5단계
 	int count = 0;
 	if(rs.next()){
 		count = rs.getInt(1);
 	}
-	//6단계
+	
+	// 6단계
 	rs.close();
 	stmt.close();
 	conn.close();
 	
-	//JSON 데이터 생성
+	// JSON 데이터 생성 및 출력	
 	JSONObject json = new JSONObject();
-	json.put("result",count);
+	json.put("result", count);
 	
 	out.print(json);
-
 %>
+
+
+
+
+
+
+

@@ -6,9 +6,21 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	MemberService service=MemberService.getInstance();
+	MemberService service = MemberService.getInstance();
 	service.register(request);
 	
 	// 리다이렉트
 	response.sendRedirect("../login.jsp?register=success");
+
 %>
+
+
+
+
+
+
+
+
+
+
+
